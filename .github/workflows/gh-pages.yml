@@ -34,7 +34,12 @@ jobs:
         run: hugo --minify
 
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: burnett01/rsync-deployments@4.1
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
+          switches: -avzr --delete
+          path: ./public/
+          remote_path: /home/website/sites/yokobec.de/
+          remote_host: gate.sys-int.de
+          remote_port: 222
+          remote_user: website
+          remote_key: ${{ secrets.SSH_PRIVATE_KEY }} 
