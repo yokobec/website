@@ -38,7 +38,7 @@ jobs:
         with:
           switches: -avzr --delete
           path: ./public/
-          remote_path: /home/website/sites/yokobec.de/
+          remote_path: /home/website/sites/yokobec.de/htdocs/
           remote_host: gate.sys-int.de
           remote_port: 222
           remote_user: website
