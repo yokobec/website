@@ -17,6 +17,9 @@ blocks:
         - name: 'Test site'
           commands:
             - echo "TEST"
+  - name: 'Deploy'
+    task:
+      jobs:
         - name: 'Deploy Site'
           commands:
-            - echo 'DEPLOY'
+            - rsync -avz --delete -e "ssh -i /home/user/.ssh/sshkey -p 222" ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
