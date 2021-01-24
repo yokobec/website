@@ -3,7 +3,9 @@ name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
-    os_image: klakegg/hugo:latest
+  containers:
+   - name: main
+     image: 'klakegg/hugo:latest'
 blocks:
   - name: 'Build'
     task:
