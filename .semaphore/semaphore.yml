@@ -3,11 +3,18 @@ name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
-    os_image: ubuntu1804
+    os_image: klakegg/hugo:latest
 blocks:
-  - name: 'Block #1'
+  - name: 'Build'
     task:
       jobs:
-        - name: 'Job #1'
+        - name: 'Build Site'
           commands:
-            - checkout
+            - hugo mod get -u
+            - hugo --minify
+        - name: 'Test site'
+          commands:
+            - echo "TEST"
+        - name: 'Deploy Site'
+          commands:
+            - echo 'DEPLOY'
