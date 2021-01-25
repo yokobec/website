@@ -14,7 +14,7 @@ blocks:
         - name: 'Build Site'
           commands:
             - checkout
-            - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0
+            - docker run --rm -it -v $(pwd):/src klakegg/hugo:ubuntu-ci
             # - hugo mod get -u
             # - hugo --minify
   - name: 'Deploy'
