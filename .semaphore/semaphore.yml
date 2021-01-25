@@ -14,7 +14,7 @@ blocks:
         - name: 'Build Site'
           commands:
             - checkout
-            - sudo apt-get install golang 
+            - sudo apt-get install -y golang 
             - sudo snap install hugo
             - pwd
             - ls
