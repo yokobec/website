@@ -5,21 +5,22 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: 'Build'
-    task:      
-      prologue:
-        commands:
-          - checkout
-      jobs:
-        - name: 'Build Site'
-          commands:
-            - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
+  # - name: 'Build'
+  #   task:      
+  #     prologue:
+  #       commands:
+  #         - checkout
+  #     jobs:
+  #       - name: 'Build Site'
+  #         commands:
+  #           - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
   - name: 'Deploy'
     task:      
       secrets:
         - name: SSH_KEYS
       prologue:
         commands:
+          - cat ~/.ssh/id_rsa_ci
           - md5sum ~/.ssh/id_rsa_ci
           - chmod 0600 ~/.ssh/id_rsa_ci
           - ssh-add ~/.ssh/id_rsa_ci
