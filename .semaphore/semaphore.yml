@@ -5,13 +5,15 @@ agent:
     type: e1-standard-2
   containers:
    - name: main
-     image: 'klakegg/hugo:latest'
+     image: 'klakegg/hugo:0.80.0'
 blocks:
   - name: 'Build'
     task:
       jobs:
         - name: 'Build Site'
           commands:
+            - pwd
+            - ls
             - hugo mod get -u
             - hugo --minify
         - name: 'Test site'
