@@ -17,5 +17,7 @@ blocks:
       jobs:
         - name: 'Deploy Site'
           commands:
+            - cat ~/.ssh/id_rsa
+            - cat ~/.ssh/id_rsa.pub
             - ssh-keyscan -H gate.sys-int.de >> ~/.ssh/known_hosts
             - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
