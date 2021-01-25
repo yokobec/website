@@ -14,6 +14,7 @@ blocks:
         - name: 'Build Site'
           commands:
             - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
+            - ls -l
   - name: 'Deploy'
     task:      
       secrets:
@@ -29,4 +30,5 @@ blocks:
       jobs:
         - name: 'Deploy Site'
           commands:
+            - ls -l
             - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa_ci -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
