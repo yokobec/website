@@ -20,11 +20,11 @@ blocks:
         - name: SSH_KEYS
       prologue:
         commands:
-          - md5sum ~/.ssh/id_rsa
-          - chmod 0600 ~/.ssh/id_rsa
-          - ssh-add ~/.ssh/id_rsa
+          - md5sum ~/.ssh/id_rsa_ci
+          - chmod 0600 ~/.ssh/id_rsa_ci
+          - ssh-add ~/.ssh/id_rsa_ci
           - ssh-keyscan -H gate.sys-int.de >> ~/.ssh/known_hosts
       jobs:
         - name: 'Deploy Site'
           commands:
-            - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
+            - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa_ci -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
