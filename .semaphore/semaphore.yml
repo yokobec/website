@@ -7,16 +7,6 @@ agent:
 blocks:
   - name: 'Build'
     task:      
-      prologue:
-        commands:
-          - checkout
-      jobs:
-        - name: 'Build Site'
-          commands:
-            - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
-            - ls -l
-  - name: 'Deploy'
-    task:      
       secrets:
         - name: SSH_KEYS
       prologue:
@@ -27,8 +17,10 @@ blocks:
           - chmod 0600 ~/.ssh/id_rsa_ci
           - ssh-add ~/.ssh/id_rsa_ci
           - ssh-keyscan -H gate.sys-int.de >> ~/.ssh/known_hosts
+          - checkout
       jobs:
         - name: 'Deploy Site'
           commands:
+            - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
             - ls -l
             - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa_ci -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
