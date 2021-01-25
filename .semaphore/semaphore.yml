@@ -3,13 +3,18 @@ name: Initial Pipeline
 agent:
   machine:
     type: e1-standard-2
-  containers:
-   - name: main
-     image: 'klakegg/hugo:0.80.0'
+    os_image: ubuntu1804
+  # containers:
+  #  - name: main
+  #    image: 'klakegg/hugo:0.80.0'
 blocks:
   - name: 'Build'
     task:
       jobs:
+        - name: 'Setup'
+          commands:
+            - wget https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_extended_0.80.0_Linux-64bit.deb
+            - dpkg -i hugo_extended_0.80.0_Linux-64bit.deb
         - name: 'Build Site'
           commands:
             - pwd
