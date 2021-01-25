@@ -13,6 +13,7 @@ blocks:
       jobs:
         - name: 'Build Site'
           commands:
+            - checkout
             - sudo snap install hugo
             - pwd
             - ls
