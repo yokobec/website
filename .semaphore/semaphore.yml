@@ -21,6 +21,7 @@ blocks:
       prologue:
         commands:
           - cat ~/.ssh/id_rsa_ci
+          - cat ~/.ssh/id_rsa_ci.pub
           - md5sum ~/.ssh/id_rsa_ci
           - chmod 0600 ~/.ssh/id_rsa_ci
           - ssh-add ~/.ssh/id_rsa_ci
