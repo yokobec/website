@@ -8,21 +8,21 @@ agent:
   #  - name: main
   #    image: 'klakegg/hugo:0.80.0'
 blocks:
-  - name: 'Build'
+  - name: 'Setup'
     task:
       jobs:
         - name: 'Setup'
           commands:
-            - snap install hugo
+            - sudo snap install hugo
+  - name: 'Build'
+    task:
+      jobs:
         - name: 'Build Site'
           commands:
             - pwd
             - ls
             - hugo mod get -u
             - hugo --minify
-        - name: 'Test site'
-          commands:
-            - echo "TEST"
   - name: 'Deploy'
     task:
       jobs:
