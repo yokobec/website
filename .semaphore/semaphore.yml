@@ -14,12 +14,9 @@ blocks:
         - name: 'Build Site'
           commands:
             - checkout
-            - sudo apt-get install -y golang 
-            - sudo snap install hugo
-            - pwd
-            - ls
-            - hugo mod get -u
-            - hugo --minify
+            - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0
+            # - hugo mod get -u
+            # - hugo --minify
   - name: 'Deploy'
     task:
       jobs:
