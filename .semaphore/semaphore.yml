@@ -15,17 +15,20 @@ blocks:
           commands:
             - docker run --rm -it -v $(pwd):/src klakegg/hugo:0.80.0-ext-ubuntu-onbuild
             - cache store page ./public
-  - name: 'Deploy'
-    task:      
+  - name: 'Docker'
+    task:
       secrets:
-        - name: SSH_KEYS
+        - name: docker
       prologue:
         commands:
-          - chmod 0600 ~/.ssh/id_rsa_ci
-          - ssh-add ~/.ssh/id_rsa_ci
-          - ssh-keyscan -H gate.sys-int.de >> ~/.ssh/known_hosts
+          - checkout
           - cache restore page
+          - echo $DOCKERREPO_PASS | docker login $DOCKERREPO_SERVER --username "$DOCKERREPO_USER" --password-stdin
       jobs:
-        - name: 'Deploy Site'
+        - name: 'Build Image'
           commands:
-            - rsync -avz --delete -e "ssh -i ~/.ssh/id_rsa_ci -p 222 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null " ./public/ website@gate.sys-int.de:/home/website/sites/yokobec.de/htdocs/
+            - export TAG=$(date '+%Y%m%d%H%M%S')
+            - docker build -t $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG .
+            - docker push $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG
+            - docker pull $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG
+            - docker images
