@@ -28,7 +28,7 @@ blocks:
         - name: 'Build Image'
           commands:
             - export TAG=$(date '+%Y%m%d%H%M%S')
-            - docker build -t $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG .
-            - docker push $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG
-            - docker pull $DOCKERREPO_SERVER/$DOCKERREPO_PROJECT/website:$TAG
+            - docker build -t $DOCKERREPO_SERVER/yokobec/website:$TAG .
+            - docker push $DOCKERREPO_SERVER/yokobec/website:$TAG
+            - docker pull $DOCKERREPO_SERVER/yokobec/website:$TAG
             - docker images
