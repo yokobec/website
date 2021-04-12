@@ -1,21 +1,110 @@
 baseURL = "https://yokobec.de/"
-languageCode = "de-de"
-title = "yokobec"
-theme = ["github.com/themefisher/meghna-hugo"]
-
-
-################################# Default configuration ###################
-# post pagination
-paginate = "6"
-# post excerpt
-summaryLength = "15"
-# disqus short name
-disqusShortname = "yokobec" 
-# disable language
 disableLanguages = []
-
-############################# Plugins ##########################
-# css plugins
+disqusShortname = "yokobec"
+languageCode = "de-de"
+paginate = "6"
+summaryLength = "15"
+theme = ["github.com/themefisher/meghna-hugo"]
+title = "yokobec"
+[Languages.de]
+contentDir = "content/german"
+copyright = "Copyright &copy; 2021 Marc Ende"
+home = "Start"
+languageCode = "de-de"
+languageName = "De"
+weight = 2
+[[Languages.de.menu.main]]
+name = "Über"
+pre = "#"
+url = "about"
+weight = 1
+[[Languages.de.menu.main]]
+name = "Services"
+pre = "#"
+url = "services"
+weight = 2
+[[Languages.de.menu.main]]
+name = "Portfolio"
+pre = "#"
+url = "portfolio"
+weight = 3
+[[Languages.de.menu.main]]
+name = "Team"
+pre = "#"
+url = "team"
+weight = 4
+[[Languages.de.menu.main]]
+name = "Preise"
+pre = "#"
+url = "pricing"
+weight = 5
+[[Languages.de.menu.main]]
+name = "Blog"
+pre = "#"
+url = "blog"
+weight = 6
+[[Languages.de.menu.main]]
+name = "Kontakt"
+pre = "#"
+url = "contact"
+weight = 7
+[Languages.en]
+contentDir = "content/english"
+copyright = "Copyright &copy; 2021 Marc Ende"
+home = "Home"
+languageCode = "en-us"
+languageName = "En"
+weight = 1
+[[Languages.en.menu.main]]
+name = "about"
+pre = "#"
+url = "about"
+weight = 1
+[[Languages.en.menu.main]]
+name = "services"
+pre = "#"
+url = "services"
+weight = 2
+[[Languages.en.menu.main]]
+name = "portfolio"
+pre = "#"
+url = "portfolio"
+weight = 3
+[[Languages.en.menu.main]]
+name = "team"
+pre = "#"
+url = "team"
+weight = 4
+[[Languages.en.menu.main]]
+name = "pricing"
+pre = "#"
+url = "pricing"
+weight = 5
+[[Languages.en.menu.main]]
+name = "blog"
+pre = "#"
+url = "blog"
+weight = 6
+[[Languages.en.menu.main]]
+name = "contact"
+pre = "#"
+url = "contact"
+weight = 7
+[params]
+author = "Marc"
+description = "Responsive Multipurpose Parallax Hugo Template"
+google_analytics_id = "259145835"
+logo = "images/logo.png"
+post_share = true
+[params.cookies]
+enable = false
+expire_days = 2
+[params.map]
+enable = false
+gmap_api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
+map_latitude = "51.5223477"
+map_longitude = "-0.1622023"
+map_marker = "images/marker.png"
 [[params.plugins.css]]
 link = "plugins/bootstrap/bootstrap.min.css"
 [[params.plugins.css]]
@@ -26,8 +115,6 @@ link = "plugins/magnific-popup/magnific-popup.css"
 link = "plugins/slick/slick.css"
 [[params.plugins.css]]
 link = "https://fonts.googleapis.com/css?family=Anaheim|Quattrocento+Sans:400,700&display=swap"
-
-# js plugins
 [[params.plugins.js]]
 link = "plugins/jquery/jquery.min.js"
 [[params.plugins.js]]
@@ -42,163 +129,24 @@ link = "plugins/magnific-popup/jquery.magnific-popup.min.js"
 link = "plugins/lazy-load/lozad.min.js"
 [[params.plugins.js]]
 link = "plugins/google-map/map.js"
-
-################### English Navigation ########################
-[[Languages.en.menu.main]]
-name = "about"
-pre = "#"
-url = "about"
-weight = 1
-
-[[Languages.en.menu.main]]
-name = "services"
-pre = "#"
-url = "services"
-weight = 2
-
-[[Languages.en.menu.main]]
-name = "portfolio"
-pre = "#"
-url = "portfolio"
-weight = 3
-
-[[Languages.en.menu.main]]
-name = "team"
-pre = "#"
-url = "team"
-weight = 4
-
-[[Languages.en.menu.main]]
-name = "pricing"
-pre = "#"
-url = "pricing"
-weight = 5
-
-[[Languages.en.menu.main]]
-name = "blog"
-pre = "#"
-url = "blog"
-weight = 6
-
-[[Languages.en.menu.main]]
-name = "contact"
-pre = "#"
-url = "contact"
-weight = 7
-
-
-################### German Navigation ########################
-[[Languages.de.menu.main]]
-name = "Über"
-pre = "#"
-url = "about"
-weight = 1
-
-[[Languages.de.menu.main]]
-name = "Services"
-pre = "#"
-url = "services"
-weight = 2
-
-[[Languages.de.menu.main]]
-name = "Portfolio"
-pre = "#"
-url = "portfolio"
-weight = 3
-
-[[Languages.de.menu.main]]
-name = "Team"
-pre = "#"
-url = "team"
-weight = 4
-
-[[Languages.de.menu.main]]
-name = "Preise"
-pre = "#"
-url = "pricing"
-weight = 5
-
-[[Languages.de.menu.main]]
-name = "Blog"
-pre = "#"
-url = "blog"
-weight = 6
-
-[[Languages.de.menu.main]]
-name = "Kontakt"
-pre = "#"
-url = "contact"
-weight = 7
-
-############################# Default Parameters ##########################
-[params]
-logo = "images/logo.png"
-# Meta data
-description = "Responsive Multipurpose Parallax Hugo Template"
-author = "Marc"
-# Google Analytics
-google_analytics_id = "259145835" # Your ID
-# post share
-post_share = true
-
-# preloader
 [params.preloader]
 enable = false
 preloader = "images/logo.png"
-
-# cookies
-[params.cookies]
-enable = false
-expire_days = 2
-
-# google map
-[params.map]
-enable = false
-gmap_api = "https://maps.googleapis.com/maps/api/js?key=AIzaSyBu5nZKbeK-WHQ70oqOWo-_4VmwOwKP9YQ"
-map_latitude = "51.5223477"
-map_longitude = "-0.1622023"
-map_marker = "images/marker.png"
-
-############################# social icons ##########################
 [[params.social]]
-icon = "ti-facebook" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-facebook"
 link = "#"
-
 [[params.social]]
-icon = "ti-twitter-alt" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-twitter-alt"
 link = "#"
-
 [[params.social]]
-icon = "ti-youtube" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-youtube"
 link = "#"
-
 [[params.social]]
-icon = "ti-linkedin" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-linkedin"
 link = "#"
-
 [[params.social]]
-icon = "ti-dribbble" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-dribbble"
 link = "#"
-
 [[params.social]]
-icon = "ti-pinterest" # themify icon pack : https://themify.me/themify-icons
+icon = "ti-pinterest"
 link = "#"
-
-
-################################ English Language ########################
-[Languages.en]
-languageName = "En"
-languageCode = "en-us"
-contentDir = "content/english"
-weight = 1
-home = "Home"
-copyright = "Copyright &copy; 2021 Marc Ende"
-
-################################ German Language ########################
-[Languages.de]
-languageName = "De"
-languageCode = "de-de"
-contentDir = "content/german"
-weight = 2
-home = "Start"
-copyright = "Copyright &copy; 2021 Marc Ende"
